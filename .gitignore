@@ -1,0 +1,74 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# Node.js dependencies
+node_modules/
+.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# Testing
+coverage/
+
+# Next.js
+.next/
+out/
+
+# Production
+build/
+
+# Misc
+.DS_Store
+*.pem
+
+# Debug logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Env files
+.env*
+
+# Vercel
+.vercel/
+
+# TypeScript
+*.tsbuildinfo
+next-env.d.ts
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pdb
+venv/
+
+# Docker
+**/Dockerfile
+**/docker-compose.yml
+
+# VSCode
+.vscode/
+
+# OS
+Thumbs.db
+
+# Ignore local data
+*.local
+
+# Ignore frontend and backend build artifacts
+frontend/.next/
+frontend/out/
+backend/__pycache__/
+backend/venv/
+
+# Ignore lock files (optional, if you want to commit only one type)
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
