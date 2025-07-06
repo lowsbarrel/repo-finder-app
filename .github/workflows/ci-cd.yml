@@ -1,0 +1,53 @@
+name: CI/CD
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  lint-build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+
+      - name: Lint frontend
+        run: |
+          cd workspace/frontend
+          npm ci
+          npm run lint
+
+      - name: Build frontend
+        run: |
+          cd workspace/frontend
+          npm run build
+
+      - name: Lint backend
+        run: |
+          cd workspace/backend
+          python -m pip install --upgrade pip
+          pip install fastapi uvicorn httpx
+          pip install flake8
+          flake8 main.py
+
+      - name: Build backend Docker image
+        run: |
+          cd workspace/backend
+          docker build -t repo-finder-backend .
+
+      - name: Build frontend Docker image
+        run: |
+          cd workspace/frontend
+          docker build -t repo-finder-frontend .
