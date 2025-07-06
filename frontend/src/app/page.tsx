@@ -28,8 +28,12 @@ export default function Home() {
       if (!res.ok) throw new Error("User not found or error fetching repos.");
       const data = await res.json();
       setRepos(data);
-    } catch (err: any) {
-      setError(err.message || "Unknown error");
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        setError("Unknown error");
+      }
     } finally {
       setLoading(false);
     }
