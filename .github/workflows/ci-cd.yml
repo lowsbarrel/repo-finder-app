@@ -36,13 +36,3 @@ jobs:
           pip install fastapi uvicorn httpx
           pip install flake8
           flake8 main.py
-
-      - name: Build backend Docker image
-        run: |
-          cd backend
-          docker build -t repo-finder-backend .
-
-      - name: Build frontend Docker image
-        run: |
-          cd frontend
-          docker build -t repo-finder-frontend .
