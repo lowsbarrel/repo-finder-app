@@ -25,18 +25,18 @@ jobs:
 
       - name: Lint frontend
         run: |
-          cd workspace/frontend
+          cd frontend
           npm ci
           npm run lint
 
       - name: Build frontend
         run: |
-          cd workspace/frontend
+          cd frontend
           npm run build
 
       - name: Lint backend
         run: |
-          cd workspace/backend
+          cd backend
           python -m pip install --upgrade pip
           pip install fastapi uvicorn httpx
           pip install flake8
@@ -44,10 +44,10 @@ jobs:
 
       - name: Build backend Docker image
         run: |
-          cd workspace/backend
+          cd backend
           docker build -t repo-finder-backend .
 
       - name: Build frontend Docker image
         run: |
-          cd workspace/frontend
+          cd frontend
           docker build -t repo-finder-frontend .
