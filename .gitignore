@@ -49,8 +49,7 @@ __pycache__/
 venv/
 
 # Docker
-**/Dockerfile
-**/docker-compose.yml
+
 
 # VSCode
 .vscode/
